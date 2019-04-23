@@ -9,11 +9,13 @@ class ArticleManager extends DbManager {
     public function selectAll(){
         $query ='SELECT * FROM Article';
         $res = $this->bdd->query($query);
-        $cars = [];
+        $articles = [];
+        $commentManager = new CommentaireManager();
         foreach  ($res as $data) {
-            $cars[] = new Article($data['id'], $data['titre'], $data['contenu'], $data['dateCreation']);
+            $comments = $commentManager->selectByArticleId($data['id']);
+            $articles[] = new Article($data['id'], $data['titre'], $data['contenu'], $data['dateCreation'], $comments);
         }
-        return $cars;
+        return $articles;
     }
     public function select($id){
         $query ='SELECT * FROM `article` WHERE id='.$id;
