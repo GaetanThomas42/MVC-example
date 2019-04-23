@@ -7,15 +7,15 @@ class Article extends ArticleManager {
     private $titre;
     private $contenu;
     private $dateCreation;
-    private $commentaires;
+    private $commentaires = [];
 
-    public function __construct($id = null, $titre = null,
-                                $contenu = null, $dateCreation = null)
+    public function __construct($id = null, $titre = null, $contenu = null, $dateCreation = null, $commentaires = [])
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->contenu = $contenu;
         $this->dateCreation = $dateCreation;
+        $this->commentaires = $commentaires;
     }
 
     /**
@@ -77,6 +77,18 @@ class Article extends ArticleManager {
     /**
      * @param mixed $dateCreation
      */
+    public function setCommentaires($commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+    }
+
+    public function getCommentaires(){
+        return $this->commentaires;
+    }
+    public function getNombreCommentaires(){
+        return count($this->commentaires);
+    }
+
     public function setDateCreation($dateCreation)
     {
         $this->dateCreation = $dateCreation;

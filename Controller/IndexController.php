@@ -5,5 +5,10 @@ class indexController{
         $articles = $articleManager->selectAll();
         require 'Vue/homeView.php';
     }
+    public function renderComments($id){
+        $commentManager = new CommentaireManager();
+        $commentaires = $commentManager->selectByArticleId($id);
+        require 'Vue/commentsVue.php';
+    }
 }
 ?>

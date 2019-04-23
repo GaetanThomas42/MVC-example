@@ -8,13 +8,18 @@
 </head>
 
 <body>
-<h2>Update an Article</h2>
-<div class='row p-5 m-3'>
-    <form class='form-group col-md-3' method='post' action='./index.php?controller=article&action=update&target=<?php echo $article->getId(); ?>'>
-        <label>Titre</label><input class='form-control' type='text' name='titre' value='<?php echo $article->getTitre(); ?>'>
-        <label>Contenu</label><input class='form-control' type='text' name='contenu' value='<?php echo $article->getContenu(); ?>'>
-        <button class='btn btn-success'>Update</button>
-        <a class='btn btn-secondary' href='./index.php?controller=article&action=selectAll'>Return</a>
-    </form>
-</div>
+    <h2>Update an Article</h2>
+    <div class='row p-5 m-3'>
+        <form class='form-group col-md-3 col-sm-6' method='post' action='./index.php?controller=article&action=update&target=<?php echo $article->getId(); ?>'>
+            <label>Titre</label><input class='form-control' type='text' name='titre' value='<?php echo $article->getTitre(); ?>'>
+            <label>Contenu</label><input class='form-control' type='text' name='contenu' value='<?php echo $article->getContenu(); ?>'>
+            <button class='btn btn-success'>Update</button>
+            <a class='btn btn-secondary' href='./index.php?controller=article&action=selectAll'>Return</a>
+        </form>
+        <div class="col-md-3 col-sm-6 text-center p-5">
+            <a class='btn bg-info text-light' href='./index.php?controller=comment&action=select&target=<?php echo $article->getId(); ?>' >
+                View Comments
+            </a>
+        </div>
+    </div>
 </body>

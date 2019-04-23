@@ -12,12 +12,12 @@
 <a class='btn btn-secondary' href='./index.php?controller=article&action=selectAll'>Admin Vue</a>
 <p>Derniers articles du forum :</p>
 
-
+<div class="row">
 <?php
   foreach ($articles as $article){
 ?>
 
-<div class="news">
+<div class="col-md-4">
     <h3>
                 <?php echo $article->getTitre(); ?>
 <em> le <?php echo $article->getDateCreation() ?></em>
@@ -28,11 +28,12 @@
     echo nl2br(htmlspecialchars($article->getContenu()));
     ?>
     <br />
-    <em><a class="btn btn-info" href="#">Commentaires</a></em>
+    <em><a class="btn btn-info" href="./index.php?controller=index&action=renderComments&target=<?php $article->getId(); ?>">Commentaires</a></em>
 </p>
 </div>
 <?php
  }
 ?>
+</div>
 </body>
 </html>
