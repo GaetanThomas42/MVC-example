@@ -6,16 +6,33 @@ class ArticleController{
         require 'Vue/adminVue.php';
     }
     public function renderInsert(){
-
         require 'Vue/insertForm.php';
     }
+    public function insert(){
+        $article = new Article(null, $_POST['titre'], $_POST['contenu'], date('Y-m-d'));
+        $articleManager = new ArticleManager();
+        $articleManager->insert($article);
+        header('Location: http://localhost/exempleMVC/index.php?controller=article&action=selectAll');
+    }
+
     public function renderUpdate($id){
         $articleManager = new ArticleManager();
         $article = $articleManager->select($id);
         require 'Vue/updateForm.php';
     }
+    public function update($id){
+        $article = new Article($id, $_POST['titre'], $_POST['contenu'], date('Y-m-d'));
+        $articleManager = new ArticleManager();
+        $articleManager->update($article);
+        header('Location: http://localhost/exempleMVC/index.php?controller=article&action=selectAll');
+    }
     public function renderDelete($id){
         require 'Vue/deleteForm.php';
+    }
+    public function delete(){
+        $articleManager = new ArticleManager();
+        $articleManager->delete($_GET['target']);
+        header('Location: http://localhost/exempleMVC/index.php?controller=article&action=selectAll');
     }
 }
 ?>

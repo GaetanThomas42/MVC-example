@@ -12,7 +12,7 @@
 <a class='btn btn-secondary' href="./index.php?controller=index&action=renderIndex">Public View</a>
 <div class="container">
         <!--Insert Car button-->
-        <a class='btn bg-success my-3  text-light' href='./index.php?controller=article&action=insert' >
+        <a class='btn bg-success my-3  text-light' href='./index.php?controller=article&action=insertForm' >
             <strong>ADD</strong> <i class="fas fa-2x fa-plus-circle mt-2"></i>
         </a>
         <!--Cars table-->
@@ -23,6 +23,7 @@
                 <th scope='col'>Title</th>
                 <th scope='col'>Content</th>
                 <th scope='col'>Creation Date</th>
+                <th scope='col'>Actions</th>
             </tr>
             </thead>
             <tbody id='tableBook'>
@@ -34,8 +35,8 @@
                             <td class='align-middle'><h5>" . $article->getContenu() . "</h5></td>
                             <td class='align-middle'><h6>" . $article->getDateCreation() . "</h6></td>
                             <td class='align-middle'>
-                                <a class='btn btn-info m-2 p-3' href='./index.php?controller=article&action=update&target=". $article->getId() ."'>UPDATE</a>
-                                <a class='btn btn-danger m-2 p-3' href='./index.php?controller=article&action=delete&target=". $article->getId() ."'><i class='fas fa-1x fa-dumpster'></i></a>
+                                <a class='btn btn-info m-2 p-3' href='./index.php?controller=article&action=updateForm&target=". $article->getId() ."'>UPDATE</a>
+                                <a class='btn btn-danger m-2 p-3' href='./index.php?controller=article&action=deleteForm&target=". $article->getId() ."'><i class='fas fa-1x fa-dumpster'></i></a>
                             </td>
                         </tr>";
             }

@@ -26,13 +26,18 @@ class ArticleManager extends DbManager {
 
     public function insert(Article $article){
         $query = "INSERT INTO `article`(`titre`, `contenu`, `dateCreation`) VALUES  ('".$article->getTitre()."','".$article->getContenu()."','".$article->getDateCreation()."')";
-        $article->setId(parent::execute($query));
-        print_alert("Car added to Database", false);
+        $res = $this->bdd->query($query);
+        $res -> execute();
     }
     public function delete($id){
         $query = "DELETE FROM `article` WHERE id =$id";
-        parent::execute($query);
-        print_alert("Car deleted to Database", false);
+        $res = $this->bdd->query($query);
+        $res -> execute();
+    }
+    public function update($article){
+        $query = "UPDATE `article` SET `titre`='".$article->getTitre()."',`contenu`='".$article->getContenu()."' WHERE id =".$article->getId();
+        $res = $this->bdd->query($query);
+        $res -> execute();
     }
 
 }

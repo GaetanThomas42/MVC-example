@@ -7,6 +7,7 @@ class Article extends ArticleManager {
     private $titre;
     private $contenu;
     private $dateCreation;
+    private $commentaires;
 
     public function __construct($id = null, $titre = null,
                                 $contenu = null, $dateCreation = null)

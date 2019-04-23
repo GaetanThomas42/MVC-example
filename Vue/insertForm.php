@@ -6,12 +6,10 @@
     <link href="style.css" rel="stylesheet" />
     <?php include 'Vue/Parts/css.php'; ?>
 </head>
-
 <body>
 <h2>Add an Article</h2>
 <div class='row p-5 m-3'>
-    <form class='form-group col-md-3' method='post' action='#'>
-        <h4>Search Audi</h4>
+    <form class='form-group col-md-3' method='post' action='index.php?controller=article&action=insert'>
         <label for="titre">Titre</label><input class='form-control' name="titre" type="text">
         <label for="contenu">Contenu</label><input class='form-control' name="contenu" type="text">
         <button class="btn btn-success">Submit</button>
