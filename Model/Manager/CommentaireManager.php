@@ -34,7 +34,7 @@ class CommentaireManager extends DbManager {
     }
 
     public function insert($commentaire){
-        $query = "INSERT INTO `commentaire`(`auteur`, `contenu`,`articleId`) VALUES  ('".$commentaire->getAuteur()."','".$commentaire->getContenu()."','".$commentaire->getArticleId()."')";
+        $query = "INSERT INTO `commentaire`(`auteur`, `contenu`,`articleId`) VALUES  ('".$commentaire->getAuteur()."','".$commentaire->getContenu()."',".$commentaire->getArticleId().")";
         $res = $this->bdd->query($query);
         $res -> execute();
     }

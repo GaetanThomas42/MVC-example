@@ -14,6 +14,7 @@
 
 <div class="row">
 <?php
+
   foreach ($articles as $article){
 ?>
 
@@ -28,7 +29,7 @@
     echo nl2br(htmlspecialchars($article->getContenu()));
     ?>
     <br />
-    <em><a class="btn btn-info" href="./index.php?controller=index&action=renderComments&target=<?php $article->getId(); ?>">Commentaires</a></em>
+    <em><a class="btn btn-info" href="./index.php?controller=index&action=renderComments&target=<?php echo $article->getId(); ?>">Commentaires</a></em>
 </p>
 </div>
 <?php

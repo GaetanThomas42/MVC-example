@@ -8,8 +8,8 @@ class CommentaireController{
     public function renderInsert($id){
         require 'Vue/insertFormComment.php';
     }
-    public function insert(){
-        $commentaire = new Commentaire(null, $_POST['auteur'], $_POST['contenu'], $_GET['target']);
+    public function insert($id){
+        $commentaire = new Commentaire(null, $_POST['auteur'], $_POST['contenu'], $id);
         $commentaireManager = new CommentaireManager();
         $commentaireManager->insert($commentaire);
         header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $_GET['target']);

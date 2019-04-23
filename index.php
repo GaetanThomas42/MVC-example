@@ -1,13 +1,14 @@
 <?php
 include 'include.php';
 
-if($_GET['controller'] === 'index'){
+if($_GET['controller'] === 'index') {
     $indexController = new IndexController();
     if ($_GET['action'] == 'renderIndex') {
         $indexController->renderIndexAction();
-    }elseif ($_GET['action'] == 'renderComments')
+    } elseif ($_GET['action'] == 'renderComments'){
         $indexController->renderComments($_GET['target']);
-}else if($_GET['controller'] === 'article' && isset($_GET['action'])){
+    }
+}else if($_GET['controller'] === 'article'){
     $articleController = new articleController();
     if ($_GET['action'] == 'insertForm'){
         $articleController->renderInsert();
@@ -24,6 +25,7 @@ if($_GET['controller'] === 'index'){
     }elseif ($_GET['action'] == 'update'){
         $articleController->update($_GET['target']);
     }
+
 }elseif ($_GET['controller'] == 'comment') {
     $commentaireController = new CommentaireController();
     if ($_GET['action'] == 'select') {
@@ -37,7 +39,7 @@ if($_GET['controller'] === 'index'){
     } elseif ($_GET['action'] == 'updateForm' && isset($_GET['target'])) {
         $commentaireController->renderUpdate($_GET['target']);
     } elseif ($_GET['action'] == 'insert') {
-        $commentaireController->insert();
+        $commentaireController->insert($_GET['target']);
     } elseif ($_GET['action'] == 'delete') {
         $commentaireController->delete();
     } elseif ($_GET['action'] == 'update') {
