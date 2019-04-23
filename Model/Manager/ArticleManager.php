@@ -1,15 +1,14 @@
 <?php
 class ArticleManager extends DbManager {
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
     }
-
     public function selectAll(){
         $query ='SELECT * FROM Article';
         $res = $this->bdd->query($query);
         $articles = [];
+
         $commentManager = new CommentaireManager();
         foreach  ($res as $data) {
             $comments = $commentManager->selectByArticleId($data['id']);
@@ -41,5 +40,4 @@ class ArticleManager extends DbManager {
         $res = $this->bdd->query($query);
         $res -> execute();
     }
-
 }

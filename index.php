@@ -1,6 +1,6 @@
 <?php
 include 'include.php';
-
+//INDEX
 if($_GET['controller'] === 'index') {
     $indexController = new IndexController();
     if ($_GET['action'] == 'renderIndex') {
@@ -8,6 +8,7 @@ if($_GET['controller'] === 'index') {
     } elseif ($_GET['action'] == 'renderComments'){
         $indexController->renderComments($_GET['target']);
     }
+//    Article
 }else if($_GET['controller'] === 'article'){
     $articleController = new articleController();
     if ($_GET['action'] == 'insertForm'){
@@ -25,19 +26,20 @@ if($_GET['controller'] === 'index') {
     }elseif ($_GET['action'] == 'update'){
         $articleController->update($_GET['target']);
     }
-
+//    Comments
 }elseif ($_GET['controller'] == 'comment') {
     $commentaireController = new CommentaireController();
     if ($_GET['action'] == 'select') {
-        $commentaireController->renderComments();
+        $commentaireController->renderComments($_GET['target']);
     }else if ($_GET['action'] == 'insertForm') {
         $commentaireController->renderInsert($_GET['target']);
     } elseif ($_GET['action'] == 'selectAll') {
-        $commentaireController->renderComments();
-    } elseif ($_GET['action'] == 'deleteForm' && isset($_GET['target'])) {
+        $commentaireController->renderComments($_GET['target']);
+    } elseif ($_GET['action'] == 'deleteForm' ) {
         $commentaireController->renderDelete($_GET['target']);
-    } elseif ($_GET['action'] == 'updateForm' && isset($_GET['target'])) {
+    } elseif ($_GET['action'] == 'updateForm') {
         $commentaireController->renderUpdate($_GET['target']);
+//        Manager methods
     } elseif ($_GET['action'] == 'insert') {
         $commentaireController->insert($_GET['target']);
     } elseif ($_GET['action'] == 'delete') {

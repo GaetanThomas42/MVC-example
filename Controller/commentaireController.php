@@ -1,45 +1,39 @@
 <?php
 class CommentaireController{
-    public function renderComments(){
-        $commentaireManager = new CommentaireManager();
-        $commentaires = $commentaireManager->selectByArticleId($_GET['target']);
+    public function renderComments($id){
+        $commentManager = new CommentaireManager();
+        $commentaires = $commentManager->selectByArticleId($id);
         require 'Vue/commentaireVue.php';
     }
     public function renderInsert($id){
         require 'Vue/insertFormComment.php';
     }
     public function insert($id){
-        $commentaire = new Commentaire(null, $_POST['auteur'], $_POST['contenu'], $id);
-        $commentaireManager = new CommentaireManager();
-        $commentaireManager->insert($commentaire);
+        $comment = new Commentaire(null, $_POST['auteur'], $_POST['contenu'], $id);
+        $commentManager = new CommentaireManager();
+        $commentManager->insert($comment);
         header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $_GET['target']);
-
     }
-
     public function renderUpdate($id){
-        $commentaireManager = new CommentaireManager();
-        $commentaire = $commentaireManager->selectById($id);
+        $commentManager = new CommentaireManager();
+        $comment = $commentManager->selectById($id);
         require 'Vue/updateFormComment.php';
     }
     public function update($id){
-        $commentaire = new Commentaire($id, "Anonymous", $_POST['contenu'], 0);
-        var_dump($commentaire);
-        $commentaireManager = new CommentaireManager();
-        $commentaireManager->update($commentaire);
-        $commentaire = $commentaireManager->selectById($id);
-        header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $commentaire->getArticleId());
+        $comment = new Commentaire($id, "Anonymous", $_POST['contenu'], 0);
+        $commentManager = new CommentaireManager();
+        $commentManager->update($comment);
+        header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $commentManager->selectById($id)->getArticleId());
     }
     public function renderDelete($id){
-        $commentaireManager = new CommentaireManager();
-        $commentaire = $commentaireManager->selectById($id);
+        $commentManager = new CommentaireManager();
+        $comment = $commentManager->selectById($id);
         require 'Vue/deleteFormComment.php';
     }
     public function delete(){
-        $commentaireManager = new CommentaireManager();
-        $commentaire = $commentaireManager->selectById($_GET['target']);
-        $commentaireManager->delete($_GET['target']);
-        header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $commentaire->getArticleId());
-
+        $commentManager = new CommentaireManager();
+        $commentManager->delete($_GET['target']);
+        header('Location: http://localhost/exempleMVC/index.php?controller=comment&action=select&target=' . $commentManager->selectById($_GET['target'])->getArticleId());
     }
 }
 ?>

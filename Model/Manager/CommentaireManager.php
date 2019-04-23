@@ -1,8 +1,7 @@
 <?php
 class CommentaireManager extends DbManager {
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
     }
 
@@ -34,7 +33,10 @@ class CommentaireManager extends DbManager {
     }
 
     public function insert($commentaire){
-        $query = "INSERT INTO `commentaire`(`auteur`, `contenu`,`articleId`) VALUES  ('".$commentaire->getAuteur()."','".$commentaire->getContenu()."',".$commentaire->getArticleId().")";
+        $query = "INSERT INTO `commentaire`(`auteur`, `contenu`,`articleId`) 
+                                VALUES  ('". $commentaire->getAuteur()."',
+                                         '". $commentaire->getContenu()."',
+                                          ". $commentaire->getArticleId().")";
         $res = $this->bdd->query($query);
         $res -> execute();
     }
@@ -44,9 +46,10 @@ class CommentaireManager extends DbManager {
         $res -> execute();
     }
     public function update($commentaire){
-        $query = "UPDATE `commentaire` SET `contenu`='" .$commentaire->getContenu() ."' WHERE id =". $commentaire->getId();
+        $query = "UPDATE `commentaire` 
+                            SET `contenu`='" .$commentaire->getContenu() ."' 
+                            WHERE id =". $commentaire->getId();
         $res = $this->bdd->query($query);
         $res -> execute();
     }
-
 }
