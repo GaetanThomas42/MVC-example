@@ -1,0 +1,21 @@
+<?php
+class ArticleController{
+    public function renderArticles(){
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectAll();
+        require 'Vue/adminVue.php';
+    }
+    public function renderInsert(){
+
+        require 'Vue/insertForm.php';
+    }
+    public function renderUpdate($id){
+        $articleManager = new ArticleManager();
+        $article = $articleManager->select($id);
+        require 'Vue/updateForm.php';
+    }
+    public function renderDelete($id){
+        require 'Vue/deleteForm.php';
+    }
+}
+?>
