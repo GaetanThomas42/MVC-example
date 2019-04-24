@@ -14,7 +14,6 @@ class ArticleController{
         $articleManager->insert($article);
         header('Location: http://localhost/exempleMVC/index.php?controller=article&action=selectAll');
     }
-
     public function renderUpdate($id){
         $articleManager = new ArticleManager();
         $article = $articleManager->select($id);
