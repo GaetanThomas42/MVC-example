@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 23 avr. 2019 à 18:25
+-- Généré le :  mer. 24 avr. 2019 à 07:44
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -35,27 +35,15 @@ CREATE TABLE IF NOT EXISTS `article` (
   `contenu` varchar(30) NOT NULL,
   `dateCreation` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `article`
 --
 
 INSERT INTO `article` (`id`, `titre`, `contenu`, `dateCreation`) VALUES
-(21, 'adzdzdzdzdzdz', 'qsqsqsq', '2019-04-23'),
-(20, 'a', 'qsqsqsq', '2019-04-23'),
-(8, 'a', 'a', '2019-04-23'),
-(9, 'a', 'a', '2019-04-23'),
-(10, 'a', 'a', '2019-04-23'),
-(11, 'a', 'a', '2019-04-23'),
-(12, 'a', 'ddd', '2019-04-23'),
-(13, 'a', 'ddd', '2019-04-23'),
-(14, 'a', 'ddd', '2019-04-23'),
-(15, 'a', 'ddd', '2019-04-23'),
-(16, 'qsqsqsqsq', 'qsqsqsq', '2019-04-23'),
-(17, 'qsqsqsqsq', 'qsqsqsq', '2019-04-23'),
-(18, 'a', 'ddd', '2019-04-23'),
-(19, 'a', 'ddd', '2019-04-23');
+(23, 'test', 'lalalalalalalalaal', '2019-04-23'),
+(24, 'nul', 'annonul', '2019-04-23');
 
 -- --------------------------------------------------------
 
@@ -70,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `auteur` varchar(30) NOT NULL,
   `contenu` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `commentaire`
@@ -78,12 +66,14 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 
 INSERT INTO `commentaire` (`id`, `articleId`, `auteur`, `contenu`) VALUES
 (3, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
+(29, 24, 'Greg', 'Complot'),
 (5, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
 (6, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
 (7, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
 (8, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
 (9, 1, 'Gazz', 'dfdfdfdfdfdfdfdfd'),
-(19, 21, 'aa', 'héhé');
+(27, 24, 'Greg', 'Mensonge'),
+(25, 23, 'Alex le jaune', 'Je suis jaune');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
